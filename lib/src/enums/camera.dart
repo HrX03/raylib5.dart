@@ -1,0 +1,1 @@
+enum CameraProjection { perspective, orthographic }

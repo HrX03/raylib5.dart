@@ -5,61 +5,76 @@ mixin _ShapesSplinesModule on _RayLibBase {
     List<Vector2> points,
     double thick,
     Color color,
-  ) =>
-      _native.DrawSplineLinear(
-        vector2ListToPointer(points),
+  ) {
+    return using(
+      (arena) => native.DrawSplineLinear(
+        vector2ListToPointer(points, allocator: arena),
         points.length,
         thick,
         color.ref,
-      );
+      ),
+    );
+  }
 
   void drawSplineBasis(
     List<Vector2> points,
     double thick,
     Color color,
-  ) =>
-      _native.DrawSplineBasis(
-        vector2ListToPointer(points),
+  ) {
+    return using(
+      (arena) => native.DrawSplineBasis(
+        vector2ListToPointer(points, allocator: arena),
         points.length,
         thick,
         color.ref,
-      );
+      ),
+    );
+  }
 
   void drawSplineCatmullRom(
     List<Vector2> points,
     double thick,
     Color color,
-  ) =>
-      _native.DrawSplineCatmullRom(
-        vector2ListToPointer(points),
+  ) {
+    return using(
+      (arena) => native.DrawSplineCatmullRom(
+        vector2ListToPointer(points, allocator: arena),
         points.length,
         thick,
         color.ref,
-      );
+      ),
+    );
+  }
 
   void drawSplineBezierQuadratic(
     List<Vector2> points,
     double thick,
     Color color,
-  ) =>
-      _native.DrawSplineBezierQuadratic(
-        vector2ListToPointer(points),
+  ) {
+    return using(
+      (arena) => native.DrawSplineBezierQuadratic(
+        vector2ListToPointer(points, allocator: arena),
         points.length,
         thick,
         color.ref,
-      );
+      ),
+    );
+  }
 
   void drawSplineBezierCubic(
     List<Vector2> points,
     double thick,
     Color color,
-  ) =>
-      _native.DrawSplineBezierCubic(
-        vector2ListToPointer(points),
+  ) {
+    return using(
+      (arena) => native.DrawSplineBezierCubic(
+        vector2ListToPointer(points, allocator: arena),
         points.length,
         thick,
         color.ref,
-      );
+      ),
+    );
+  }
 
   void drawSplineSegmentLinear(
     Vector2 p1,
@@ -67,7 +82,7 @@ mixin _ShapesSplinesModule on _RayLibBase {
     double thick,
     Color color,
   ) =>
-      _native.DrawSplineSegmentLinear(p1.ref, p2.ref, thick, color.ref);
+      native.DrawSplineSegmentLinear(p1.ref, p2.ref, thick, color.ref);
 
   void drawSplineSegmentBasis(
     Vector2 p1,
@@ -77,7 +92,7 @@ mixin _ShapesSplinesModule on _RayLibBase {
     double thick,
     Color color,
   ) =>
-      _native.DrawSplineSegmentBasis(
+      native.DrawSplineSegmentBasis(
         p1.ref,
         p2.ref,
         p3.ref,
@@ -94,7 +109,7 @@ mixin _ShapesSplinesModule on _RayLibBase {
     double thick,
     Color color,
   ) =>
-      _native.DrawSplineSegmentCatmullRom(
+      native.DrawSplineSegmentCatmullRom(
         p1.ref,
         p2.ref,
         p3.ref,
@@ -110,7 +125,7 @@ mixin _ShapesSplinesModule on _RayLibBase {
     double thick,
     Color color,
   ) =>
-      _native.DrawSplineSegmentBezierQuadratic(
+      native.DrawSplineSegmentBezierQuadratic(
         p1.ref,
         c2.ref,
         p3.ref,
@@ -126,7 +141,7 @@ mixin _ShapesSplinesModule on _RayLibBase {
     double thick,
     Color color,
   ) =>
-      _native.DrawSplineSegmentBezierCubic(
+      native.DrawSplineSegmentBezierCubic(
         p1.ref,
         c2.ref,
         c3.ref,

@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:ffi/ffi.dart';
 import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 
@@ -15,6 +12,13 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
   }
 
   Rectangle.fromRef(super.ref) : super.fromRef();
+
+  @override
+  Pointer<raylib.Rectangle> getReference() {
+    pointer ??= calloc<raylib.Rectangle>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
 
   double get x => ref.x;
   double get y => ref.y;

@@ -1,21 +1,21 @@
 part of '../../raylib.dart';
 
 mixin _CoreKeyboardModule on _RayLibBase {
-  bool isKeyPressed(KeyboardKey key) => _native.IsKeyPressed(key.keyCode);
+  bool isKeyPressed(KeyboardKey key) => native.IsKeyPressed(key.keyCode);
 
   bool isKeyPressedRepeat(KeyboardKey key) =>
-      _native.IsKeyPressedRepeat(key.keyCode);
+      native.IsKeyPressedRepeat(key.keyCode);
 
-  bool isKeyDown(KeyboardKey key) => _native.IsKeyDown(key.keyCode);
+  bool isKeyDown(KeyboardKey key) => native.IsKeyDown(key.keyCode);
 
-  bool isKeyReleased(KeyboardKey key) => _native.IsKeyReleased(key.keyCode);
+  bool isKeyReleased(KeyboardKey key) => native.IsKeyReleased(key.keyCode);
 
-  bool isKeyUp(KeyboardKey key) => _native.IsKeyUp(key.keyCode);
+  bool isKeyUp(KeyboardKey key) => native.IsKeyUp(key.keyCode);
 
   KeyboardKey getKeyPressed() =>
-      KeyboardKey.fromKeyCode(_native.GetKeyPressed());
+      KeyboardKey.fromKeyCode(native.GetKeyPressed());
 
-  int getCharPressed() => _native.GetCharPressed();
+  int getCharPressed() => native.GetCharPressed();
 
-  void setExitKey(KeyboardKey key) => _native.SetExitKey(key.keyCode);
+  void setExitKey(KeyboardKey key) => native.SetExitKey(key.keyCode);
 }

@@ -5,6 +5,13 @@ import 'package:raylib/src/generated_raylib.dart' as raylib;
 class Texture extends NativeClass<raylib.Texture> {
   Texture.fromRef(super.ref) : super.fromRef();
 
+  @override
+  Pointer<raylib.Texture> getReference() {
+    pointer ??= calloc<raylib.Texture>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
+
   int get id => ref.id;
   int get width => ref.width;
   int get height => ref.height;

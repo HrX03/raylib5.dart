@@ -6,6 +6,13 @@ import 'package:raylib/src/generated_raylib.dart' as raylib;
 class NPatchInfo extends NativeClass<raylib.NPatchInfo> {
   NPatchInfo.fromRef(super.ref) : super.fromRef();
 
+  @override
+  Pointer<raylib.NPatchInfo> getReference() {
+    pointer ??= calloc<raylib.NPatchInfo>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
+
   Rectangle get source => Rectangle.fromRef(ref.source);
   int get left => ref.left;
   int get top => ref.top;

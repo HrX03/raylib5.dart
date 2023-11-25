@@ -1,10 +1,15 @@
 part of '../../raylib.dart';
 
 mixin _CoreCursorModule on _RayLibBase {
-  void showCursor() => _native.ShowCursor();
-  void hideCursor() => _native.HideCursor();
-  bool isCursorHidden() => _native.IsCursorHidden();
-  void enableCursor() => _native.EnableCursor();
-  void disableCursor() => _native.DisableCursor();
-  bool isCursorOnScreen() => _native.IsCursorOnScreen();
+  void showCursor() => native.ShowCursor();
+
+  void hideCursor() => native.HideCursor();
+
+  bool isCursorHidden() => native.IsCursorHidden();
+
+  void enableCursor() => native.EnableCursor();
+
+  void disableCursor() => native.DisableCursor();
+
+  bool isCursorOnScreen() => native.IsCursorOnScreen();
 }

@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:ffi/ffi.dart';
 import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 
@@ -13,7 +10,14 @@ class NVector2<T extends num> extends NativeClass<raylib.Vector2> {
   }
 
   NVector2.fromRef(super.ref) : super.fromRef();
-  NVector2.zero() : this(0 as T, 0 as T);
+  NVector2.zero() : this(0.0 as T, 0.0 as T);
+
+  @override
+  Pointer<raylib.Vector2> getReference() {
+    pointer ??= calloc<raylib.Vector2>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
 
   T get x => ref.x.convertTo<T>();
   T get y => ref.y.convertTo<T>();
@@ -33,6 +37,13 @@ class NVector3<T extends num> extends NativeClass<raylib.Vector3> {
 
   NVector3.fromRef(super.ref) : super.fromRef();
   NVector3.zero() : this(0 as T, 0 as T, 0 as T);
+
+  @override
+  Pointer<raylib.Vector3> getReference() {
+    pointer ??= calloc<raylib.Vector3>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
 
   T get x => ref.x.convertTo<T>();
   T get y => ref.y.convertTo<T>();
@@ -55,6 +66,13 @@ class NVector4<T extends num> extends NativeClass<raylib.Vector4> {
 
   NVector4.fromRef(super.ref) : super.fromRef();
   NVector4.zero() : this(0 as T, 0 as T, 0 as T, 0 as T);
+
+  @override
+  Pointer<raylib.Vector4> getReference() {
+    pointer ??= calloc<raylib.Vector4>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
 
   T get x => ref.x.convertTo<T>();
   T get y => ref.y.convertTo<T>();

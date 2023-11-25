@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:ffi/ffi.dart';
 import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 
@@ -15,6 +12,13 @@ class Color extends NativeClass<raylib.Color> {
   }
 
   Color.fromRef(super.ref) : super.fromRef();
+
+  @override
+  Pointer<raylib.Color> getReference() {
+    pointer ??= calloc<raylib.Color>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
 
   int get r => ref.r;
   int get g => ref.g;

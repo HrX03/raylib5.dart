@@ -1,14 +1,13 @@
 import 'dart:ffi';
 
-class PointerList<V extends NativeType, E, T> {
-  const PointerList(this.pointer, this.transformer);
+class PointerList<V extends NativeType> {
+  const PointerList(this.pointer);
 
   final Pointer<V> pointer;
-  final T Function(E) transformer;
 }
 
-extension IntPointerList<T> on PointerList<Int, int, T> {
-  T operator [](int index) {
-    return transformer(pointer[index]);
+extension IntPointerList on PointerList<Int> {
+  int operator [](int index) {
+    return pointer[index];
   }
 }

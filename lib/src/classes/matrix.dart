@@ -4,6 +4,13 @@ import 'package:raylib/src/generated_raylib.dart' as raylib;
 class Matrix extends NativeClass<raylib.Matrix> {
   Matrix.fromRef(super.ref) : super.fromRef();
 
+  @override
+  Pointer<raylib.Matrix> getReference() {
+    pointer ??= calloc<raylib.Matrix>();
+    pointer!.ref = ref;
+    return pointer!;
+  }
+
   double get m0 => ref.m0;
   double get m4 => ref.m4;
   double get m8 => ref.m8;

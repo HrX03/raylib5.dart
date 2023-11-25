@@ -6,12 +6,33 @@ void main() {
       windows: "C:\\Users\\dnbia\\Projects\\raylib\\src\\raylib.dll",
     ),
   );
+
   raylib.initWindow(480, 360, "test");
   raylib.setTargetFPS(60);
-  raylib.hideCursor();
-  raylib.disableCursor();
+
+  final list = raylib.loadAutomationEventList(
+    raylib.fileExists("events.txt") ? "events.txt" : null,
+  );
+  raylib.setAutomationEventList(list);
+  //raylib.setAutomationEventBaseFrame(0);
+  //raylib.startAutomationEventRecording();
+  final events = list.getEvents();
+  bool playing = true;
+  int eventPointer = 0;
+  int frameCount = 0;
 
   while (!raylib.windowShouldClose()) {
+    if (playing && events[eventPointer].frame == frameCount) {
+      raylib.playAutomationEvent(events[eventPointer]);
+      raylib.traceLog(LogLevel.info, "event n $eventPointer");
+      eventPointer++;
+
+      if (eventPointer >= events.length) {
+        playing = false;
+        raylib.traceLog(LogLevel.info, "done playing");
+      }
+    }
+
     raylib.beginDrawing();
     raylib.clearBackground(Color.rayWhite);
 
@@ -20,6 +41,12 @@ void main() {
     final mousePos = raylib.getMousePosition();
     final clicking = raylib.isMouseButtonDown(MouseButton.left);
     final crosshairColor = clicking ? Color.blue : Color.black;
+
+    /* if (raylib.isKeyPressed(KeyboardKey.space)) {
+      raylib.stopAutomationEventRecording();
+      raylib.exportAutomationEventList(list, "events.txt");
+      raylib.unloadAutomationEventList(list);
+    } */
 
     raylib.drawRectangleRoundedLines(
       Rectangle(pos, pos, 40, 40),
@@ -46,6 +73,8 @@ void main() {
 
     raylib.drawText("${raylib.getFPS()}", 4, 4, 24, Color.red);
     raylib.endDrawing();
+
+    frameCount++;
   }
 
   raylib.closeWindow();

@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:ffi/ffi.dart';
 import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/enums/pixel_format.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
@@ -22,6 +19,13 @@ class Image extends NativeClass<raylib.Image> {
     pointer!.ref.mipmaps = ref.mipmaps;
     pointer!.ref.format = ref.format;
     ref = pointer!.ref;
+  }
+
+  @override
+  Pointer<raylib.Image> getReference() {
+    pointer ??= calloc<raylib.Image>();
+    pointer!.ref = ref;
+    return pointer!;
   }
 
   Pointer<Void> get data => ref.data;

@@ -7,7 +7,7 @@ mixin _CoreShaderModule on _RayLibBase {
   ) {
     return using(
       (arena) => Shader.fromRef(
-        _native.LoadShader(
+        native.LoadShader(
           vsFileName?.toNativeUtf8(allocator: arena).cast() ?? nullptr,
           fsFileName?.toNativeUtf8(allocator: arena).cast() ?? nullptr,
         ),
@@ -21,7 +21,7 @@ mixin _CoreShaderModule on _RayLibBase {
   ) {
     return using(
       (arena) => Shader.fromRef(
-        _native.LoadShader(
+        native.LoadShader(
           vsCode?.toNativeUtf8(allocator: arena).cast() ?? nullptr,
           fsCode?.toNativeUtf8(allocator: arena).cast() ?? nullptr,
         ),
@@ -29,14 +29,14 @@ mixin _CoreShaderModule on _RayLibBase {
     );
   }
 
-  bool isShaderReady(Shader shader) => _native.IsShaderReady(shader.ref);
+  bool isShaderReady(Shader shader) => native.IsShaderReady(shader.ref);
 
   int getShaderLocation(
     Shader shader,
     String uniformName,
   ) {
     return using(
-      (arena) => _native.GetShaderLocation(
+      (arena) => native.GetShaderLocation(
         shader.ref,
         uniformName.toNativeUtf8(allocator: arena).cast(),
       ),
@@ -48,7 +48,7 @@ mixin _CoreShaderModule on _RayLibBase {
     String attribName,
   ) {
     return using(
-      (arena) => _native.GetShaderLocationAttrib(
+      (arena) => native.GetShaderLocationAttrib(
         shader.ref,
         attribName.toNativeUtf8(allocator: arena).cast(),
       ),
@@ -60,7 +60,7 @@ mixin _CoreShaderModule on _RayLibBase {
     int locIndex,
     UniformValue value,
   ) =>
-      _native.SetShaderValue(
+      native.SetShaderValue(
         shader.ref,
         locIndex,
         value.toUniformPointer().cast(),
@@ -95,7 +95,7 @@ mixin _CoreShaderModule on _RayLibBase {
       index = val.serialize(pointer, index);
     }
 
-    return _native.SetShaderValueV(
+    return native.SetShaderValueV(
       shader.ref,
       locIndex,
       pointer.cast(),
@@ -109,14 +109,14 @@ mixin _CoreShaderModule on _RayLibBase {
     int locIndex,
     Matrix mat,
   ) =>
-      _native.SetShaderValueMatrix(shader.ref, locIndex, mat.ref);
+      native.SetShaderValueMatrix(shader.ref, locIndex, mat.ref);
 
   void setShaderValueTexture(
     Shader shader,
     int locIndex,
     Texture2D texture,
   ) =>
-      _native.SetShaderValueTexture(shader.ref, locIndex, texture.ref);
+      native.SetShaderValueTexture(shader.ref, locIndex, texture.ref);
 
-  void unloadShader(Shader shader) => _native.UnloadShader(shader.ref);
+  void unloadShader(Shader shader) => native.UnloadShader(shader.ref);
 }

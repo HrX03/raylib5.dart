@@ -10,18 +10,25 @@ sealed class UniformValue<T, N extends NativeType> {
   const UniformValue(this.value);
 
   static UniformValue<int, Int32> integer(int value) => _UniformInt(value);
+
   static UniformValue<double, Float> float(double value) =>
       _UniformFloat(value);
+
   static UniformValue<Vector2, Float> vec2(Vector2 value) =>
       _UniformVec2(value);
+
   static UniformValue<Vector3, Float> vec3(Vector3 value) =>
       _UniformVec3(value);
+
   static UniformValue<Vector4, Float> vec4(Vector4 value) =>
       _UniformVec4(value);
+
   static UniformValue<IVector2, Int32> ivec2(IVector2 value) =>
       _UniformIVec2(value);
+
   static UniformValue<IVector3, Int32> ivec3(IVector3 value) =>
       _UniformIVec3(value);
+
   static UniformValue<IVector4, Int32> ivec4(IVector4 value) =>
       _UniformIVec4(value);
 
@@ -214,42 +221,74 @@ class _UniformIVec4 extends UniformValue<IVector4, Int32> {
   }
 }
 
-extension UniformIntConverter on List<int> {
+extension UniformIntConverter on int {
+  UniformValue<int, Int32> get asUniform => UniformValue.integer(this);
+}
+
+extension UniformFloatConverter on double {
+  UniformValue<double, Float> get asUniform => UniformValue.float(this);
+}
+
+extension UniformVec2Converter on Vector2 {
+  UniformValue<Vector2, Float> get asUniform => UniformValue.vec2(this);
+}
+
+extension UniformVec3Converter on Vector3 {
+  UniformValue<Vector3, Float> get asUniform => UniformValue.vec3(this);
+}
+
+extension UniformVec4Converter on Vector4 {
+  UniformValue<Vector4, Float> get asUniform => UniformValue.vec4(this);
+}
+
+extension UniformIVec2Converter on IVector2 {
+  UniformValue<IVector2, Int32> get asUniform => UniformValue.ivec2(this);
+}
+
+extension UniformIVec3Converter on IVector3 {
+  UniformValue<IVector3, Int32> get asUniform => UniformValue.ivec3(this);
+}
+
+extension UniformIVec4Converter on IVector4 {
+  UniformValue<IVector4, Int32> get asUniform => UniformValue.ivec4(this);
+}
+
+extension UniformListIntConverter on List<int> {
   List<UniformValue<int, Int32>> toUniformData() =>
-      map(_UniformInt.new).toList();
+      map(UniformValue.integer).toList();
 }
 
-extension UniformFloatConverter on List<double> {
+extension UniformListFloatConverter on List<double> {
   List<UniformValue<double, Float>> toUniformData() =>
-      map(_UniformFloat.new).toList();
+      map(UniformValue.float).toList();
 }
 
-extension UniformVec2Converter on List<Vector2> {
+extension UniformListVec2Converter on List<Vector2> {
   List<UniformValue<Vector2, Float>> toUniformData() =>
-      map(_UniformVec2.new).toList();
+      map(UniformValue.vec2).toList();
 }
 
-extension UniformVec3Converter on List<Vector3> {
+extension UniformListVec3Converter on List<Vector3> {
   List<UniformValue<Vector3, Float>> toUniformData() =>
-      map(_UniformVec3.new).toList();
+      map(UniformValue.vec3).toList();
 }
 
-extension UniformVec4Converter on List<Vector4> {
+extension UniformListVec4Converter on List<Vector4> {
   List<UniformValue<Vector4, Float>> toUniformData() =>
-      map(_UniformVec4.new).toList();
+      map(UniformValue.vec4).toList();
 }
 
-extension UniformIVec2Converter on List<IVector2> {
+extension UniformListIVec2Converter on List<IVector2> {
   List<UniformValue<IVector2, Int32>> toUniformData() =>
-      map(_UniformIVec2.new).toList();
+      map(UniformValue.ivec2).toList();
 }
 
-extension UniformIVec3Converter on List<IVector3> {
+extension UniformListIVec3Converter on List<IVector3> {
   List<UniformValue<IVector3, Int32>> toUniformData() =>
-      map(_UniformIVec3.new).toList();
+      map(UniformValue.ivec3).toList();
 }
 
-extension UniformIVec4Converter on List<IVector4> {
+extension UniformListIVec4Converter on List<IVector4> {
   List<UniformValue<IVector4, Int32>> toUniformData() =>
-      map(_UniformIVec4.new).toList();
+      map(UniformValue.ivec4).toList();
 }

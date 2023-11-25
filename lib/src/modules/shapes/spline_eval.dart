@@ -7,7 +7,7 @@ mixin _ShapesSplineEvalModule on _RayLibBase {
     double t,
   ) =>
       Vector2.fromRef(
-        _native.GetSplinePointLinear(startPos.ref, endPos.ref, t),
+        native.GetSplinePointLinear(startPos.ref, endPos.ref, t),
       );
 
   Vector2 getSplinePointBasis(
@@ -18,7 +18,7 @@ mixin _ShapesSplineEvalModule on _RayLibBase {
     double t,
   ) =>
       Vector2.fromRef(
-        _native.GetSplinePointBasis(p1.ref, p2.ref, p3.ref, p4.ref, t),
+        native.GetSplinePointBasis(p1.ref, p2.ref, p3.ref, p4.ref, t),
       );
 
   Vector2 getSplinePointCatmullRom(
@@ -29,7 +29,7 @@ mixin _ShapesSplineEvalModule on _RayLibBase {
     double t,
   ) =>
       Vector2.fromRef(
-        _native.GetSplinePointCatmullRom(p1.ref, p2.ref, p3.ref, p4.ref, t),
+        native.GetSplinePointCatmullRom(p1.ref, p2.ref, p3.ref, p4.ref, t),
       );
 
   Vector2 getSplinePointBezierQuad(
@@ -39,7 +39,7 @@ mixin _ShapesSplineEvalModule on _RayLibBase {
     double t,
   ) =>
       Vector2.fromRef(
-        _native.GetSplinePointBezierQuad(p1.ref, c2.ref, p3.ref, t),
+        native.GetSplinePointBezierQuad(p1.ref, c2.ref, p3.ref, t),
       );
 
   Vector2 getSplinePointBezierCubic(
@@ -50,6 +50,6 @@ mixin _ShapesSplineEvalModule on _RayLibBase {
     double t,
   ) =>
       Vector2.fromRef(
-        _native.GetSplinePointBezierCubic(p1.ref, c2.ref, c3.ref, p4.ref, t),
+        native.GetSplinePointBezierCubic(p1.ref, c2.ref, c3.ref, p4.ref, t),
       );
 }

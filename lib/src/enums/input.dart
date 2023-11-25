@@ -137,3 +137,55 @@ enum KeyboardKey {
     );
   }
 }
+
+enum GamepadButton {
+  unknown,
+  leftFaceUp,
+  leftFaceRight,
+  leftFaceDown,
+  leftFaceLeft,
+  rightFaceUp,
+  rightFaceRight,
+  rightFaceDown,
+  rightFaceLeft,
+  leftTrigger1,
+  leftTrigger2,
+  rightTrigger1,
+  rightTrigger2,
+  middleLeft,
+  middle,
+  middleRight,
+  leftThumb,
+  rightThumb,
+}
+
+enum GamepadAxis { leftX, leftY, rightX, rightY, leftTrigger, rightTrigger }
+
+enum Gesture {
+  none,
+  tap,
+  doubleTap,
+  hold,
+  drag,
+  swipeRight,
+  swipeLeft,
+  swipeUp,
+  swipeDown,
+  pinchIn,
+  pinchOut;
+
+  int get value => 2 << index;
+
+  factory Gesture.fromValue(int value) {
+    return Gesture.values.firstWhere(
+      (e) => e.value == value,
+      orElse: () => throw ArgumentError.value(value, "value"),
+    );
+  }
+}
+
+extension GestureApplier on Set<Gesture> {
+  int apply() {
+    return fold(0, (p, e) => p | e.value);
+  }
+}

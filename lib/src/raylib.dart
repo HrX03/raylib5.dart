@@ -34,6 +34,15 @@ part 'modules/shapes/collision.dart';
 part 'modules/shapes/spline_eval.dart';
 part 'modules/shapes/splines.dart';
 
+part 'modules/textures/color.dart';
+part 'modules/textures/image_drawing.dart';
+part 'modules/textures/image_generation.dart';
+part 'modules/textures/image_loading.dart';
+part 'modules/textures/image_manipulation.dart';
+part 'modules/textures/texture_configuration.dart';
+part 'modules/textures/texture_drawing.dart';
+part 'modules/textures/texture_loading.dart';
+
 abstract class _RayLibBase {
   final raylib.RayLibNative native;
 
@@ -64,7 +73,15 @@ class RayLib extends _RayLibBase
         _ShapesBasicModules,
         _ShapesCollisionModule,
         _ShapesSplineEvalModule,
-        _ShapesSplinesModule {
+        _ShapesSplinesModule,
+        _TexturesColorModule,
+        _TexturesImageDrawingModule,
+        _TexturesImageGenerationModule,
+        _TexturesImageLoadingModule,
+        _TexturesImageManipulationModule,
+        _TexturesTextureConfigurationModule,
+        _TexturesTextureDrawingModule,
+        _TexturesTextureLoadingModule {
   const RayLib._(super.native);
 
   factory RayLib.initWithSources({required LibrarySources sources}) {

@@ -20,13 +20,6 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
 
   Camera2D.fromRef(super.ref) : super.fromRef();
 
-  @override
-  Pointer<raylib.Camera2D> getReference() {
-    pointer ??= calloc<raylib.Camera2D>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
-
   Vector2 get offset => Vector2.fromRef(ref.offset);
   set offset(Vector2 offset) => ref.offset = offset.ref;
 
@@ -58,13 +51,6 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
   }
 
   Camera3D.fromRef(super.ref) : super.fromRef();
-
-  @override
-  Pointer<raylib.Camera3D> getReference() {
-    pointer ??= calloc<raylib.Camera3D>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
 
   Vector3 get position => Vector3.fromRef(ref.position);
   set position(Vector3 position) => ref.position = position.ref;

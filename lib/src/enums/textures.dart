@@ -1,3 +1,12 @@
+enum CubemapLayout {
+  autoDetect,
+  lineVertical,
+  lineHorizontal,
+  crossThreeByFour,
+  crossFourByThree,
+  panorama,
+}
+
 enum PixelFormat {
   uncompressedGrayscale(8), // 8 bit per pixel (no alpha)
   uncompressedGrayAlpha(8 * 2), // 8*2 bpp (2 channels)
@@ -29,4 +38,20 @@ enum PixelFormat {
   const PixelFormat(this.bitPerPixel);
 
   int get value => index + 1;
+}
+
+enum TextureFilter {
+  point,
+  bilinear,
+  trilinear,
+  anisotropic4x,
+  anisotropic8x,
+  anisotropic16x,
+}
+
+enum TextureWrap {
+  repeat,
+  clamp,
+  mirrorRepeat,
+  mirrorClamp,
 }

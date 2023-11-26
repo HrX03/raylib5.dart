@@ -1,6 +1,7 @@
 export 'src/classes/automation.dart';
 export 'src/classes/camera.dart';
 export 'src/classes/color.dart';
+export 'src/classes/font.dart';
 export 'src/classes/glyph_info.dart';
 export 'src/classes/image.dart';
 export 'src/classes/matrix.dart';
@@ -17,6 +18,6 @@ export 'src/enums/config.dart';
 export 'src/enums/input.dart';
 export 'src/enums/log_level.dart';
 export 'src/enums/n_patch_layout.dart';
-export 'src/enums/pixel_format.dart';
 export 'src/enums/shader.dart';
+export 'src/enums/textures.dart';
 export 'src/raylib.dart';

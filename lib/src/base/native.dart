@@ -12,9 +12,14 @@ abstract class NativeClass<T extends Struct> {
   NativeClass();
   NativeClass.fromRef(this.ref) : pointer = null;
 
-  Pointer<T> getReference();
-
   void free() {
     if (pointer != null) calloc.free(pointer!);
   }
+}
+
+mixin Pointable<T extends Struct> on NativeClass<T> {
+  @override
+  T get ref;
+
+  Pointer<T> getPointer();
 }

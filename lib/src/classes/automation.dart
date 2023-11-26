@@ -6,13 +6,6 @@ import 'package:raylib/src/generated_raylib.dart' as raylib;
 class AutomationEvent extends NativeClass<raylib.AutomationEvent> {
   AutomationEvent.fromRef(super.ref) : super.fromRef();
 
-  @override
-  Pointer<raylib.AutomationEvent> getReference() {
-    pointer ??= calloc<raylib.AutomationEvent>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
-
   int get frame => ref.frame;
   AutomationEventType get type => AutomationEventType.values[ref.type];
 
@@ -24,14 +17,15 @@ class AutomationEvent extends NativeClass<raylib.AutomationEvent> {
       );
 }
 
-class AutomationEventList extends NativeClass<raylib.AutomationEventList> {
+class AutomationEventList extends NativeClass<raylib.AutomationEventList>
+    with Pointable<raylib.AutomationEventList> {
   AutomationEventList.fromRef(super.ref) : super.fromRef();
 
   @override
   raylib.AutomationEventList get ref => pointer?.ref ?? super.ref;
 
   @override
-  Pointer<raylib.AutomationEventList> getReference() {
+  Pointer<raylib.AutomationEventList> getPointer() {
     if (pointer == null) {
       final oldRef = ref;
       pointer = calloc<raylib.AutomationEventList>();

@@ -12,7 +12,7 @@ mixin _CoreAutomationModule on _RayLibBase {
   }
 
   void unloadAutomationEventList(AutomationEventList list) {
-    return native.UnloadAutomationEventList(list.getReference());
+    return native.UnloadAutomationEventList(list.getPointer());
   }
 
   bool exportAutomationEventList(AutomationEventList list, String fileName) {
@@ -25,7 +25,7 @@ mixin _CoreAutomationModule on _RayLibBase {
   }
 
   void setAutomationEventList(AutomationEventList list) =>
-      native.SetAutomationEventList(list.getReference());
+      native.SetAutomationEventList(list.getPointer());
 
   void setAutomationEventBaseFrame(int frame) =>
       native.SetAutomationEventBaseFrame(frame);

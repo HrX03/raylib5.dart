@@ -1,14 +1,21 @@
 import 'package:raylib/src/base/native.dart';
-import 'package:raylib/src/enums/pixel_format.dart';
+import 'package:raylib/src/enums/textures.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 
-class Texture extends NativeClass<raylib.Texture> {
+class Texture extends NativeClass<raylib.Texture>
+    with Pointable<raylib.Texture> {
   Texture.fromRef(super.ref) : super.fromRef();
 
   @override
-  Pointer<raylib.Texture> getReference() {
-    pointer ??= calloc<raylib.Texture>();
-    pointer!.ref = ref;
+  raylib.Texture get ref => pointer?.ref ?? super.ref;
+
+  @override
+  Pointer<raylib.Texture> getPointer() {
+    if (pointer == null) {
+      final oldRef = ref;
+      pointer = calloc<raylib.Texture>();
+      pointer!.ref = oldRef;
+    }
     return pointer!;
   }
 

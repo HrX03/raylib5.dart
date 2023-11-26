@@ -33,10 +33,6 @@ void main(List<String> args) {
     ),
   );
 
-  Color fade(Color color, double alpha) {
-    return Color.fromRef(raylib.native.Fade(color.ref, alpha));
-  }
-
   // Initialization
   //--------------------------------------------------------------------------------------
   const screenWidth = 800;
@@ -291,8 +287,8 @@ void main(List<String> args) {
     raylib.endMode2D();
 
     // Draw game controls
-    raylib.drawRectangle(10, 10, 290, 145, fade(Color.skyBlue, 0.5));
-    raylib.drawRectangleLines(10, 10, 290, 145, fade(Color.blue, 0.8));
+    raylib.drawRectangle(10, 10, 290, 145, raylib.fade(Color.skyBlue, 0.5));
+    raylib.drawRectangleLines(10, 10, 290, 145, raylib.fade(Color.blue, 0.8));
 
     raylib.drawText("Controls:", 20, 20, 10, Color.black);
     raylib.drawText(
@@ -322,8 +318,14 @@ void main(List<String> args) {
 
     // Draw automation events recording indicator
     if (eventRecording) {
-      raylib.drawRectangle(10, 160, 290, 30, fade(Color.red, 0.3));
-      raylib.drawRectangleLines(10, 160, 290, 30, fade(Color.maroon, 0.8));
+      raylib.drawRectangle(10, 160, 290, 30, raylib.fade(Color.red, 0.3));
+      raylib.drawRectangleLines(
+        10,
+        160,
+        290,
+        30,
+        raylib.fade(Color.maroon, 0.8),
+      );
       raylib.drawCircle(30, 175, 10, Color.maroon);
 
       if (((frameCounter / 15) % 2) == 1) {
@@ -336,8 +338,14 @@ void main(List<String> args) {
         );
       }
     } else if (eventPlaying) {
-      raylib.drawRectangle(10, 160, 290, 30, fade(Color.lime, 0.3));
-      raylib.drawRectangleLines(10, 160, 290, 30, fade(Color.darkGreen, 0.8));
+      raylib.drawRectangle(10, 160, 290, 30, raylib.fade(Color.lime, 0.3));
+      raylib.drawRectangleLines(
+        10,
+        160,
+        290,
+        30,
+        raylib.fade(Color.darkGreen, 0.8),
+      );
       raylib.drawTriangle(
         Vector2(20, 155 + 10),
         Vector2(20, 155 + 30),

@@ -29,13 +29,6 @@ class VrStereoConfig extends NativeClass<raylib.VrStereoConfig> {
 
   VrStereoConfig.fromRef(super.ref) : super.fromRef();
 
-  @override
-  Pointer<raylib.VrStereoConfig> getReference() {
-    pointer ??= calloc<raylib.VrStereoConfig>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
-
   Array2<Matrix> get projection => (
         Matrix.fromRef(ref.projection[0]),
         Matrix.fromRef(ref.projection[1]),
@@ -91,13 +84,6 @@ class VrDeviceInfo extends NativeClass<raylib.VrDeviceInfo> {
   }
 
   VrDeviceInfo.fromRef(super.ref) : super.fromRef();
-
-  @override
-  Pointer<raylib.VrDeviceInfo> getReference() {
-    pointer ??= calloc<raylib.VrDeviceInfo>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
 
   int get hResolution => ref.hResolution;
 

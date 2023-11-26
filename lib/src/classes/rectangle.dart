@@ -13,13 +13,6 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
 
   Rectangle.fromRef(super.ref) : super.fromRef();
 
-  @override
-  Pointer<raylib.Rectangle> getReference() {
-    pointer ??= calloc<raylib.Rectangle>();
-    pointer!.ref = ref;
-    return pointer!;
-  }
-
   double get x => ref.x;
   double get y => ref.y;
   double get width => ref.width;

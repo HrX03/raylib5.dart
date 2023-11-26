@@ -1,8 +1,8 @@
-import 'package:raylib/src/base/native.dart';
-import 'package:raylib/src/base/types.dart';
 import 'package:raylib/src/classes/matrix.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
-import 'package:raylib/src/utils/utils.dart';
+import 'package:raylib/src/internal/native.dart';
+import 'package:raylib/src/internal/types.dart';
+import 'package:raylib/src/internal/utils.dart';
 
 class VrStereoConfig extends NativeClass<raylib.VrStereoConfig> {
   VrStereoConfig({

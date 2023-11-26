@@ -1,6 +1,6 @@
-import 'package:raylib/src/base/native.dart';
-import 'package:raylib/src/base/pointer_list.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
+import 'package:raylib/src/internal/pointer_list.dart';
 
 class Shader extends NativeClass<raylib.Shader> {
   Shader.fromRef(super.ref) : super.fromRef();

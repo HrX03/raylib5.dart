@@ -1,7 +1,7 @@
-import 'package:raylib/src/base/native.dart';
-import 'package:raylib/src/base/types.dart';
 import 'package:raylib/src/enums/automation.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
+import 'package:raylib/src/internal/types.dart';
 
 class AutomationEvent extends NativeClass<raylib.AutomationEvent> {
   AutomationEvent.fromRef(super.ref) : super.fromRef();

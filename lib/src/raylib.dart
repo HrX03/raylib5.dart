@@ -4,10 +4,9 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/base/types.dart';
-import 'package:raylib/src/base/uniform.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
-import 'package:raylib/src/utils/utils.dart';
+import 'package:raylib/src/internal/types.dart';
+import 'package:raylib/src/internal/utils.dart';
 
 part 'modules/core/advanced.dart';
 part 'modules/core/automation.dart';

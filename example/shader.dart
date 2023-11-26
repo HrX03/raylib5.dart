@@ -1,5 +1,4 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/base/uniform.dart';
 
 const colorsPerPalette = 8;
 

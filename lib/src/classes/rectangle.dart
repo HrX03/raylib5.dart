@@ -1,5 +1,5 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class Rectangle extends NativeClass<raylib.Rectangle> {
   Rectangle(double x, double y, double width, double height) {

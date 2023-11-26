@@ -1,5 +1,5 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class Matrix extends NativeClass<raylib.Matrix> {
   Matrix.fromRef(super.ref) : super.fromRef();

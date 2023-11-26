@@ -1,6 +1,6 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/enums/textures.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class Texture extends NativeClass<raylib.Texture>
     with Pointable<raylib.Texture> {

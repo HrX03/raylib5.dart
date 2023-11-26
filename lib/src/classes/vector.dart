@@ -1,5 +1,5 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class NVector2<T extends num> extends NativeClass<raylib.Vector2> {
   NVector2(T x, T y) {

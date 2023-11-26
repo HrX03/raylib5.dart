@@ -11,6 +11,7 @@ export 'src/classes/rectangle.dart';
 export 'src/classes/render_texture.dart';
 export 'src/classes/shader.dart';
 export 'src/classes/texture.dart';
+export 'src/classes/uniform.dart';
 export 'src/classes/vector.dart';
 export 'src/classes/vr.dart';
 export 'src/enums/blend_mode.dart';

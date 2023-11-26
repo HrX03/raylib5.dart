@@ -1,6 +1,6 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/enums/textures.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class Image extends NativeClass<raylib.Image> with Pointable<raylib.Image> {
   Image.fromRef(super.ref) : super.fromRef();

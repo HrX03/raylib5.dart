@@ -2,13 +2,13 @@ import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/src/base/types.dart';
 import 'package:raylib/src/classes/glyph_info.dart';
 import 'package:raylib/src/classes/image.dart';
 import 'package:raylib/src/classes/matrix.dart';
 import 'package:raylib/src/classes/rectangle.dart';
 import 'package:raylib/src/classes/vector.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/types.dart';
 
 Pointer<raylib.Image> imageListToPointer(
   List<Image> data, {

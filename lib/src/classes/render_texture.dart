@@ -1,6 +1,6 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/classes/texture.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class RenderTexture extends NativeClass<raylib.RenderTexture> {
   RenderTexture.fromRef(super.ref) : super.fromRef();

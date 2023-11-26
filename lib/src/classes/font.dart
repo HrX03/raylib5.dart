@@ -1,8 +1,8 @@
-import 'package:raylib/src/base/native.dart';
 import 'package:raylib/src/classes/glyph_info.dart';
 import 'package:raylib/src/classes/rectangle.dart';
 import 'package:raylib/src/classes/texture.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
+import 'package:raylib/src/internal/native.dart';
 
 class Font extends NativeClass<raylib.Font> {
   Font.fromRef(super.ref) : super.fromRef();

@@ -3,8 +3,10 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/src/base/types.dart';
+import 'package:raylib/src/classes/glyph_info.dart';
 import 'package:raylib/src/classes/image.dart';
 import 'package:raylib/src/classes/matrix.dart';
+import 'package:raylib/src/classes/rectangle.dart';
 import 'package:raylib/src/classes/vector.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 
@@ -20,7 +22,31 @@ Pointer<raylib.Image> imageListToPointer(
   return cArray;
 }
 
-Pointer<raylib.Vector2> vector2ListToPointer<N extends Struct>(
+Pointer<raylib.GlyphInfo> glyphInfoListToPointer(
+  List<GlyphInfo> data, {
+  Allocator allocator = calloc,
+}) {
+  final cArray = allocator<raylib.GlyphInfo>(data.length);
+  for (var i = 0; i < data.length; i++) {
+    cArray[i] = data[i].ref;
+  }
+
+  return cArray;
+}
+
+Pointer<raylib.Rectangle> rectangleListToPointer(
+  List<Rectangle> data, {
+  Allocator allocator = calloc,
+}) {
+  final cArray = allocator<raylib.Rectangle>(data.length);
+  for (var i = 0; i < data.length; i++) {
+    cArray[i] = data[i].ref;
+  }
+
+  return cArray;
+}
+
+Pointer<raylib.Vector2> vector2ListToPointer(
   List<Vector2> data, {
   Allocator allocator = calloc,
 }) {
@@ -48,13 +74,27 @@ Pointer<Uint8> byteListToUintPointer(
 }
 
 Uint8List uintPointerToByteList(Pointer<Uint8> pointer, int size) {
-  //return pointer.asTypedList(size);
   final data = Uint8List(size);
   for (int i = 0; i < data.length; i++) {
     data[i] = pointer[i];
   }
 
   return data;
+}
+
+Pointer<Int> codepointsToPointer(
+  List<int>? codepoints, {
+  Allocator allocator = calloc,
+}) {
+  if (codepoints == null) return nullptr;
+
+  final pointer = allocator<Int>(codepoints.length);
+
+  for (int i = 0; i < codepoints.length; i++) {
+    pointer[i] = codepoints[i];
+  }
+
+  return pointer;
 }
 
 extension MatrixArrayCopy2 on Array<raylib.Matrix> {

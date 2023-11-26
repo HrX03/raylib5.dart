@@ -37,16 +37,4 @@ mixin _CoreDrawModule on _RayLibBase {
       native.BeginVrStereoMode(config.ref);
 
   void endVrStereoMode() => native.EndVrStereoMode();
-
-  void drawText(String text, int x, int y, int fontSize, Color color) {
-    return using(
-      (arena) => native.DrawText(
-        text.toNativeUtf8(allocator: arena).cast(),
-        x,
-        y,
-        fontSize,
-        color.ref,
-      ),
-    );
-  }
 }

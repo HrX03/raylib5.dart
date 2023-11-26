@@ -34,6 +34,10 @@ part 'modules/shapes/collision.dart';
 part 'modules/shapes/spline_eval.dart';
 part 'modules/shapes/splines.dart';
 
+part 'modules/text/drawing.dart';
+part 'modules/text/info.dart';
+part 'modules/text/loading.dart';
+
 part 'modules/textures/color.dart';
 part 'modules/textures/image_drawing.dart';
 part 'modules/textures/image_generation.dart';
@@ -74,6 +78,9 @@ class RayLib extends _RayLibBase
         _ShapesCollisionModule,
         _ShapesSplineEvalModule,
         _ShapesSplinesModule,
+        _TextDrawingModule,
+        _TextInfoModule,
+        _TextLoadingModule,
         _TexturesColorModule,
         _TexturesImageDrawingModule,
         _TexturesImageGenerationModule,

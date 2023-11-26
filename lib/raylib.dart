@@ -15,6 +15,7 @@ export 'src/classes/vector.dart';
 export 'src/classes/vr.dart';
 export 'src/enums/blend_mode.dart';
 export 'src/enums/config.dart';
+export 'src/enums/font.dart';
 export 'src/enums/input.dart';
 export 'src/enums/log_level.dart';
 export 'src/enums/n_patch_layout.dart';

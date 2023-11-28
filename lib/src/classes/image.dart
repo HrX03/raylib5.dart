@@ -2,7 +2,7 @@ import 'package:raylib/src/enums/textures.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 import 'package:raylib/src/internal/native.dart';
 
-class Image extends NativeClass<raylib.Image> with Pointable<raylib.Image> {
+class Image extends NativeClass<raylib.Image> with Pointable, Unloadable {
   Image.fromRef(super.ref) : super.fromRef();
 
   @override
@@ -17,6 +17,9 @@ class Image extends NativeClass<raylib.Image> with Pointable<raylib.Image> {
     }
     return pointer!;
   }
+
+  @override
+  void unload(raylib.RayLibNative native) => native.UnloadImage(ref);
 
   int get width => ref.width;
   int get height => ref.height;

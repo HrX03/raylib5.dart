@@ -46,7 +46,7 @@ mixin _ShapesCollisionModule on _RayLibBase {
     );
   }
 
-  (bool, Vector2 collisionPoint) checkCollisionLines(
+  LineCollisionResult checkCollisionLines(
     Vector2 startPos1,
     Vector2 endPos1,
     Vector2 startPos2,

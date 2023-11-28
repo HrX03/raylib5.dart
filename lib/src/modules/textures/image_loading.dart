@@ -41,7 +41,7 @@ mixin _TexturesImageLoadingModule on _RayLibBase {
     );
   }
 
-  (Image img, int frameCount) loadImageAnim(String fileName) {
+  ImageSequence loadImageAnim(String fileName) {
     return using((arena) {
       final frameCountP = arena<Int>();
       final img = native.LoadImageAnim(

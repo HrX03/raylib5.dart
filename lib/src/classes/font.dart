@@ -4,8 +4,11 @@ import 'package:raylib/src/classes/texture.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 import 'package:raylib/src/internal/native.dart';
 
-class Font extends NativeClass<raylib.Font> {
+class Font extends NativeClass<raylib.Font> with Unloadable {
   Font.fromRef(super.ref) : super.fromRef();
+
+  @override
+  void unload(raylib.RayLibNative native) => native.UnloadFont(ref);
 
   int get baseSize => ref.baseSize;
 

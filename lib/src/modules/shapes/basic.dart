@@ -1,6 +1,6 @@
 part of '../../raylib.dart';
 
-mixin _ShapesBasicModules on _RayLibBase {
+mixin _ShapesBasicModule on _RayLibBase {
   void setShapesTexture(Texture2D texture, Rectangle source) =>
       native.SetShapesTexture(texture.ref, source.ref);
 

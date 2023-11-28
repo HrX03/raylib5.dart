@@ -1,7 +1,7 @@
 import 'package:raylib/src/enums/automation.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 import 'package:raylib/src/internal/native.dart';
-import 'package:raylib/src/internal/types.dart';
+import 'package:raylib/src/types.dart';
 
 class AutomationEvent extends NativeClass<raylib.AutomationEvent> {
   AutomationEvent.fromRef(super.ref) : super.fromRef();
@@ -18,7 +18,7 @@ class AutomationEvent extends NativeClass<raylib.AutomationEvent> {
 }
 
 class AutomationEventList extends NativeClass<raylib.AutomationEventList>
-    with Pointable<raylib.AutomationEventList> {
+    with Pointable, Unloadable {
   AutomationEventList.fromRef(super.ref) : super.fromRef();
 
   @override
@@ -33,6 +33,10 @@ class AutomationEventList extends NativeClass<raylib.AutomationEventList>
     }
     return pointer!;
   }
+
+  @override
+  void unload(raylib.RayLibNative native) =>
+      native.UnloadAutomationEventList(getPointer());
 
   int get capacity => ref.capacity;
   int get count => ref.count;

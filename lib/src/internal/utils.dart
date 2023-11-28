@@ -8,7 +8,7 @@ import 'package:raylib/src/classes/matrix.dart';
 import 'package:raylib/src/classes/rectangle.dart';
 import 'package:raylib/src/classes/vector.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
-import 'package:raylib/src/internal/types.dart';
+import 'package:raylib/src/types.dart';
 
 Pointer<raylib.Image> imageListToPointer(
   List<Image> data, {
@@ -146,6 +146,72 @@ extension RecordIndexAccess2<T> on (T, T) {
       0 => $1,
       1 => $2,
       _ => throw ArgumentError.value(index),
+    };
+  }
+}
+
+extension TraceLogCallbackWrapper on TraceLogCallback {
+  void Function(int, Pointer<Char>, Pointer<Char>) wrap() {
+    return (int logLevel, Pointer<Char> text, Pointer<Char> args) {
+      final textStr = text.cast<Utf8>().toDartString();
+      final argsStr = args.cast<Utf8>().toDartString();
+
+      return this(logLevel, textStr, argsStr);
+    };
+  }
+}
+
+extension LoadFileDataCallbackWrapper on LoadFileDataCallback {
+  Pointer<UnsignedChar> Function(Pointer<Char>, Pointer<Int>) wrap() {
+    return (Pointer<Char> fileName, Pointer<Int> dataSize) {
+      final fileNameStr = fileName.cast<Utf8>().toDartString();
+      final rData = this(fileNameStr, dataSize.value);
+      dataSize.value = rData.length;
+
+      final pointer = calloc<UnsignedChar>(rData.length);
+
+      for (int i = 0; i < rData.length; i++) {
+        pointer[i] = rData[i];
+      }
+
+      return pointer;
+    };
+  }
+}
+
+extension SaveFileDataCallbackWrapper on SaveFileDataCallback {
+  bool Function(Pointer<Char>, Pointer<Void>, int) wrap() {
+    return (Pointer<Char> fileName, Pointer<Void> data, int dataSize) {
+      final fileNameStr = fileName.cast<Utf8>().toDartString();
+      final dataBytes = data.cast<Uint8>().asTypedList(dataSize);
+
+      return this(fileNameStr, dataBytes, dataSize);
+    };
+  }
+}
+
+extension LoadFileTextCallbackWrapper on LoadFileTextCallback {
+  Pointer<Char> Function(Pointer<Char>) wrap() {
+    return (Pointer<Char> fileName) {
+      final fileNameStr = fileName.cast<Utf8>().toDartString();
+      final response = this(fileNameStr);
+      final arena = Arena();
+
+      try {
+        return response.toNativeUtf8(allocator: arena).cast();
+      } finally {
+        arena.releaseAll();
+      }
+    };
+  }
+}
+
+extension SaveFileTextCallbackWrapper on SaveFileTextCallback {
+  bool Function(Pointer<Char>, Pointer<Char>) wrap() {
+    return (Pointer<Char> fileName, Pointer<Char> text) {
+      final fileNameStr = fileName.cast<Utf8>().toDartString();
+      final textStr = text.cast<Utf8>().toDartString();
+      return this(fileNameStr, textStr);
     };
   }
 }

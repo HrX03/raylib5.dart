@@ -1,10 +1,11 @@
 import 'package:raylib/src/classes/matrix.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
 import 'package:raylib/src/internal/native.dart';
-import 'package:raylib/src/internal/types.dart';
 import 'package:raylib/src/internal/utils.dart';
+import 'package:raylib/src/types.dart';
 
-class VrStereoConfig extends NativeClass<raylib.VrStereoConfig> {
+class VrStereoConfig extends NativeClass<raylib.VrStereoConfig>
+    with Unloadable {
   VrStereoConfig({
     required Array2<Matrix> projection,
     required Array2<Matrix> viewOffset,
@@ -28,6 +29,9 @@ class VrStereoConfig extends NativeClass<raylib.VrStereoConfig> {
   }
 
   VrStereoConfig.fromRef(super.ref) : super.fromRef();
+
+  @override
+  void unload(raylib.RayLibNative native) => native.UnloadVrStereoConfig(ref);
 
   Array2<Matrix> get projection => (
         Matrix.fromRef(ref.projection[0]),

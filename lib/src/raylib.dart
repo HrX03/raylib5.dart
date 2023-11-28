@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
@@ -5,7 +6,6 @@ import 'dart:typed_data';
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
-import 'package:raylib/src/internal/types.dart';
 import 'package:raylib/src/internal/utils.dart';
 
 part 'modules/core/advanced.dart';
@@ -46,6 +46,8 @@ part 'modules/textures/texture_configuration.dart';
 part 'modules/textures/texture_drawing.dart';
 part 'modules/textures/texture_loading.dart';
 
+part 'modules/managed/managed.dart';
+
 abstract class _RayLibBase {
   final raylib.RayLibNative native;
 
@@ -54,6 +56,7 @@ abstract class _RayLibBase {
 
 class RayLib extends _RayLibBase
     with
+        _ManagedModule,
         _CoreAdvancedModule,
         _CoreAutomationModule,
         _CoreCursorModule,
@@ -73,7 +76,7 @@ class RayLib extends _RayLibBase
         _CoreUtilsModule,
         _CoreVrModule,
         _CoreWindowModule,
-        _ShapesBasicModules,
+        _ShapesBasicModule,
         _ShapesCollisionModule,
         _ShapesSplineEvalModule,
         _ShapesSplinesModule,
@@ -124,5 +127,46 @@ class LibrarySources {
           _ => throw UnsupportedError("Unsupported platform"),
         } ??
         (throw UnsupportedError("No library available for current platform"));
+  }
+}
+
+const Symbol _zoneRayLibReference = #_rayLibRef;
+bool get isRayLibInZonedMode {
+  final value = Zone.current[_zoneRayLibReference];
+  return value != null && value is RayLib;
+}
+
+void assertRayLibInZonedMode() {
+  if (!isRayLibInZonedMode) {
+    throw _UnzonedRayLibError();
+  }
+}
+
+RayLib get zoneRayLib {
+  assertRayLibInZonedMode();
+
+  return Zone.current[_zoneRayLibReference]! as RayLib;
+}
+
+void runRayLib(
+  void Function() main, {
+  required LibrarySources sources,
+}) {
+  final raylib = RayLib.initWithSources(sources: sources);
+  runZoned(
+    main,
+    zoneValues: {_zoneRayLibReference: raylib},
+  );
+}
+
+class _UnzonedRayLibError extends Error {
+  _UnzonedRayLibError();
+
+  @override
+  String toString() {
+    return """
+The zoned RayLib instance could not be found.
+Consider running toplevel raylib methods inside the scope passed to runRayLib.
+""";
   }
 }

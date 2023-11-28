@@ -23,3 +23,5 @@ export 'src/enums/n_patch_layout.dart';
 export 'src/enums/shader.dart';
 export 'src/enums/textures.dart';
 export 'src/raylib.dart';
+export 'src/toplevel.dart';
+export 'src/types.dart';

@@ -4539,25 +4539,6 @@ class RayLibNative {
   late final _ImageBlurGaussian = _ImageBlurGaussianPtr.asFunction<
       void Function(ffi.Pointer<Image>, int)>();
 
-  void ImageKernelConvolution(
-    ffi.Pointer<Image> image,
-    ffi.Pointer<ffi.Float> kernel,
-    int kernelSize,
-  ) {
-    return _ImageKernelConvolution(
-      image,
-      kernel,
-      kernelSize,
-    );
-  }
-
-  late final _ImageKernelConvolutionPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Float>,
-              ffi.Int)>>('ImageKernelConvolution');
-  late final _ImageKernelConvolution = _ImageKernelConvolutionPtr.asFunction<
-      void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Float>, int)>();
-
   void ImageResize(
     ffi.Pointer<Image> image,
     int newWidth,
@@ -9946,11 +9927,11 @@ const int _HAS_NODISCARD = 1;
 
 const int RAYLIB_VERSION_MAJOR = 5;
 
-const int RAYLIB_VERSION_MINOR = 1;
+const int RAYLIB_VERSION_MINOR = 0;
 
 const int RAYLIB_VERSION_PATCH = 0;
 
-const String RAYLIB_VERSION = '5.1-dev';
+const String RAYLIB_VERSION = '5.0';
 
 const double PI = 3.1415927410125732;
 

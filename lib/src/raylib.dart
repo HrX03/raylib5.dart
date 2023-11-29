@@ -46,6 +46,13 @@ part 'modules/textures/texture_configuration.dart';
 part 'modules/textures/texture_drawing.dart';
 part 'modules/textures/texture_loading.dart';
 
+part 'modules/audio/dev_management.dart';
+part 'modules/audio/music_management.dart';
+part 'modules/audio/processor.dart';
+part 'modules/audio/stream_management.dart';
+part 'modules/audio/wave_loading.dart';
+part 'modules/audio/wave_management.dart';
+
 part 'modules/managed/managed.dart';
 
 abstract class _RayLibBase {
@@ -90,7 +97,13 @@ class RayLib extends _RayLibBase
         _TexturesImageManipulationModule,
         _TexturesTextureConfigurationModule,
         _TexturesTextureDrawingModule,
-        _TexturesTextureLoadingModule {
+        _TexturesTextureLoadingModule,
+        _AudioDevManagementModule,
+        _AudioMusicManagementModule,
+        _AudioProcessorModule,
+        _AudioStreamManagementModule,
+        _AudioWaveLoadingModule,
+        _AudioWaveManagementModule {
   const RayLib._(super.native);
 
   factory RayLib.initWithSources({required LibrarySources sources}) {

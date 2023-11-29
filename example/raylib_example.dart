@@ -2,9 +2,7 @@ import 'package:raylib/raylib.dart';
 
 void main() {
   final raylib = RayLib.initWithSources(
-    sources: const LibrarySources(
-      windows: "C:\\Users\\dnbia\\Projects\\raylib\\src\\raylib.dll",
-    ),
+    sources: const LibrarySources(windows: "./src/raylib.dll"),
   );
 
   raylib.initWindow(480, 360, "test");

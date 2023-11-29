@@ -3,9 +3,7 @@ import 'package:raylib/raylib.dart';
 void main(List<String> args) {
   runRayLib(
     rayMain,
-    sources: const LibrarySources(
-      windows: "C:\\Users\\dnbia\\Projects\\raylib\\src\\raylib.dll",
-    ),
+    sources: const LibrarySources(windows: "./src/raylib.dll"),
   );
 }
 

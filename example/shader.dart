@@ -43,9 +43,7 @@ const List<String> paletteText = [
 
 void main() {
   final raylib = RayLib.initWithSources(
-    sources: const LibrarySources(
-      windows: "C:\\Users\\dnbia\\Projects\\raylib\\src\\raylib.dll",
-    ),
+    sources: const LibrarySources(windows: "./src/raylib.dll"),
   );
 
   const int screenWidth = 800;
@@ -60,7 +58,10 @@ void main() {
   // Load shader to be used on some parts drawing
   // NOTE 1: Using GLSL 330 shader version, on OpenGL ES 2.0 use GLSL 100 shader version
   // NOTE 2: Defining 0 (NULL) for vertex shader forces usage of internal default vertex shader
-  final Shader shader = raylib.loadShader(null, "./example/palette_switch.fs");
+  final Shader shader = raylib.loadShader(
+    null,
+    "./example/resources/palette_switch.fs",
+  );
 
   // Get variable (uniform) location on the shader to connect with the program
   // NOTE: If uniform variable could not be found in the shader, function returns -1

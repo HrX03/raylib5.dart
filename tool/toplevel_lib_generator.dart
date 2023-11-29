@@ -15,7 +15,7 @@ import 'package:recase/recase.dart';
 const String header = """
 // GENERATED FILE: DO NOT EDIT
 //
-// Generated using "dart run ./tools/toplevel_lib_generator.dart generate"
+// Generated using "dart run ./tool/toplevel_lib_generator.dart generate"
 """;
 
 const List<String> requiredImports = [

@@ -1,10 +1,182 @@
 // GENERATED FILE: DO NOT EDIT
 //
-// Generated using "dart run ./tools/toplevel_lib_generator.dart generate"
+// Generated using "dart run ./tool/toplevel_lib_generator.dart generate"
 
 import 'dart:ffi';
 import 'dart:typed_data';
 import 'package:raylib/raylib.dart';
+
+/* ----- audio/dev_management.dart ----- */
+void initAudioDevice() => zoneRayLib.initAudioDevice();
+
+void closeAudioDevice() => zoneRayLib.closeAudioDevice();
+
+bool isAudioDeviceReady() => zoneRayLib.isAudioDeviceReady();
+
+void setMasterVolume(double volume) => zoneRayLib.setMasterVolume(volume);
+
+double getMasterVolume() => zoneRayLib.getMasterVolume();
+
+/* ----- audio/music_management.dart ----- */
+Music loadMusicStream(String fileName) => zoneRayLib.loadMusicStream(fileName);
+
+Music loadMusicStreamFromMemory(String fileType, Uint8List data) =>
+    zoneRayLib.loadMusicStreamFromMemory(fileType, data);
+
+bool isMusicReady(Music music) => zoneRayLib.isMusicReady(music);
+
+void unloadMusicStream(Music music) => zoneRayLib.unloadMusicStream(music);
+
+void playMusicStream(Music music) => zoneRayLib.playMusicStream(music);
+
+bool isMusicStreamPlaying(Music music) =>
+    zoneRayLib.isMusicStreamPlaying(music);
+
+void updateMusicStream(Music music) => zoneRayLib.updateMusicStream(music);
+
+void stopMusicStream(Music music) => zoneRayLib.stopMusicStream(music);
+
+void pauseMusicStream(Music music) => zoneRayLib.pauseMusicStream(music);
+
+void resumeMusicStream(Music music) => zoneRayLib.resumeMusicStream(music);
+
+void seekMusicStream(Music music, double position) =>
+    zoneRayLib.seekMusicStream(music, position);
+
+void setMusicVolume(Music music, double volume) =>
+    zoneRayLib.setMusicVolume(music, volume);
+
+void setMusicPitch(Music music, double pitch) =>
+    zoneRayLib.setMusicPitch(music, pitch);
+
+void setMusicPan(Music music, double pan) => zoneRayLib.setMusicPan(music, pan);
+
+double getMusicTimeLength(Music music) => zoneRayLib.getMusicTimeLength(music);
+
+double getMusicTimePlayed(Music music) => zoneRayLib.getMusicTimePlayed(music);
+
+/* ----- audio/processor.dart ----- */
+AudioProcessorToken attachAudioStreamProcessor(
+  AudioStream stream,
+  FloatAudioCallback processor,
+) =>
+    zoneRayLib.attachAudioStreamProcessor(stream, processor);
+
+void detachAudioStreamProcessor(
+  AudioStream stream,
+  AudioProcessorToken token,
+) =>
+    zoneRayLib.detachAudioStreamProcessor(stream, token);
+
+AudioProcessorToken attachAudioMixedProcessor(FloatAudioCallback processor) =>
+    zoneRayLib.attachAudioMixedProcessor(processor);
+
+void detachAudioMixedProcessor(AudioProcessorToken token) =>
+    zoneRayLib.detachAudioMixedProcessor(token);
+
+/* ----- audio/stream_management.dart ----- */
+AudioStream loadAudioStream(int sampleRate, int sampleSize, int channels) =>
+    zoneRayLib.loadAudioStream(sampleRate, sampleSize, channels);
+
+bool isAudioStreamReady(AudioStream stream) =>
+    zoneRayLib.isAudioStreamReady(stream);
+
+void unloadAudioStream(AudioStream stream) =>
+    zoneRayLib.unloadAudioStream(stream);
+
+void updateAudioStream(AudioStream stream, Uint8List data) =>
+    zoneRayLib.updateAudioStream(stream, data);
+
+bool isAudioStreamProcessed(AudioStream stream) =>
+    zoneRayLib.isAudioStreamProcessed(stream);
+
+void playAudioStream(AudioStream stream) => zoneRayLib.playAudioStream(stream);
+
+void pauseAudioStream(AudioStream stream) =>
+    zoneRayLib.pauseAudioStream(stream);
+
+void resumeAudioStream(AudioStream stream) =>
+    zoneRayLib.resumeAudioStream(stream);
+
+bool isAudioStreamPlaying(AudioStream stream) =>
+    zoneRayLib.isAudioStreamPlaying(stream);
+
+void stopAudioStream(AudioStream stream) => zoneRayLib.stopAudioStream(stream);
+
+void setAudioStreamVolume(AudioStream stream, double volume) =>
+    zoneRayLib.setAudioStreamVolume(stream, volume);
+
+void setAudioStreamPitch(AudioStream stream, double pitch) =>
+    zoneRayLib.setAudioStreamPitch(stream, pitch);
+
+void setAudioStreamPan(AudioStream stream, double pan) =>
+    zoneRayLib.setAudioStreamPan(stream, pan);
+
+void setAudioStreamBufferSizeDefault(int size) =>
+    zoneRayLib.setAudioStreamBufferSizeDefault(size);
+
+void setAudioStreamCallback(AudioStream stream, AudioCallback callback) =>
+    zoneRayLib.setAudioStreamCallback(stream, callback);
+
+/* ----- audio/wave_loading.dart ----- */
+Wave loadWave(String fileName) => zoneRayLib.loadWave(fileName);
+
+Wave loadWaveFromMemory(String fileType, Uint8List fileData) =>
+    zoneRayLib.loadWaveFromMemory(fileType, fileData);
+
+bool isWaveReady(Wave wave) => zoneRayLib.isWaveReady(wave);
+
+Sound loadSound(String fileName) => zoneRayLib.loadSound(fileName);
+
+Sound loadSoundFromWave(Wave wave) => zoneRayLib.loadSoundFromWave(wave);
+
+Sound loadSoundAlias(Sound source) => zoneRayLib.loadSoundAlias(source);
+
+bool isSoundReady(Sound sound) => zoneRayLib.isSoundReady(sound);
+
+void updateSound(Sound sound, Uint8List data, int sampleCount) =>
+    zoneRayLib.updateSound(sound, data, sampleCount);
+
+void unloadWave(Wave wave) => zoneRayLib.unloadWave(wave);
+
+void unloadSound(Sound sound) => zoneRayLib.unloadSound(sound);
+
+void unloadSoundAlias(Sound alias) => zoneRayLib.unloadSoundAlias(alias);
+
+bool exportWave(Wave wave, String fileName) =>
+    zoneRayLib.exportWave(wave, fileName);
+
+bool exportWaveAsCode(Wave wave, String fileName) =>
+    zoneRayLib.exportWaveAsCode(wave, fileName);
+
+/* ----- audio/wave_management.dart ----- */
+void playSound(Sound sound) => zoneRayLib.playSound(sound);
+
+void stopSound(Sound sound) => zoneRayLib.stopSound(sound);
+
+void pauseSound(Sound sound) => zoneRayLib.pauseSound(sound);
+
+void resumeSound(Sound sound) => zoneRayLib.resumeSound(sound);
+
+bool isSoundPlaying(Sound sound) => zoneRayLib.isSoundPlaying(sound);
+
+void setSoundVolume(Sound sound, double volume) =>
+    zoneRayLib.setSoundVolume(sound, volume);
+
+void setSoundPitch(Sound sound, double pitch) =>
+    zoneRayLib.setSoundPitch(sound, pitch);
+
+void setSoundPan(Sound sound, double pan) => zoneRayLib.setSoundPan(sound, pan);
+
+Wave waveCopy(Wave wave) => zoneRayLib.waveCopy(wave);
+
+void waveCrop(Wave wave, int initSample, int finalSample) =>
+    zoneRayLib.waveCrop(wave, initSample, finalSample);
+
+void waveFormat(Wave wave, int sampleRate, int sampleSize, int channels) =>
+    zoneRayLib.waveFormat(wave, sampleRate, sampleSize, channels);
+
+List<double> loadWaveSamples(Wave wave) => zoneRayLib.loadWaveSamples(wave);
 
 /* ----- core/advanced.dart ----- */
 void swapScreenBuffer() => zoneRayLib.swapScreenBuffer();

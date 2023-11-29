@@ -28,9 +28,7 @@ class EnvElement {
 
 void main(List<String> args) {
   final raylib = RayLib.initWithSources(
-    sources: const LibrarySources(
-      windows: "C:\\Users\\dnbia\\Projects\\raylib\\src\\raylib.dll",
-    ),
+    sources: const LibrarySources(windows: "./src/raylib.dll"),
   );
 
   // Initialization

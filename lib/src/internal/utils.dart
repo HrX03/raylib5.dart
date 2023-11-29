@@ -82,6 +82,24 @@ Uint8List uintPointerToByteList(Pointer<Uint8> pointer, int size) {
   return data;
 }
 
+Int16List shortPointerToByte16List(Pointer<Short> pointer, int size) {
+  final data = Int16List(size);
+  for (int i = 0; i < data.length; i++) {
+    data[i] = pointer[i];
+  }
+
+  return data;
+}
+
+Float32List floatPointerToFloat32List(Pointer<Float> pointer, int size) {
+  final data = Float32List(size);
+  for (int i = 0; i < data.length; i++) {
+    data[i] = pointer[i];
+  }
+
+  return data;
+}
+
 Pointer<Int> codepointsToPointer(
   List<int>? codepoints, {
   Allocator allocator = calloc,
@@ -95,6 +113,15 @@ Pointer<Int> codepointsToPointer(
   }
 
   return pointer;
+}
+
+List<double> pointerToSamples(Pointer<Float> pointer, int size) {
+  final data = List<double>.filled(size, 0.0);
+  for (int i = 0; i < data.length; i++) {
+    data[i] = pointer[i];
+  }
+
+  return data;
 }
 
 extension MatrixArrayCopy2 on Array<raylib.Matrix> {
@@ -212,6 +239,38 @@ extension SaveFileTextCallbackWrapper on SaveFileTextCallback {
       final fileNameStr = fileName.cast<Utf8>().toDartString();
       final textStr = text.cast<Utf8>().toDartString();
       return this(fileNameStr, textStr);
+    };
+  }
+}
+
+extension AudioCallbackWrapper on AudioCallback {
+  void Function(Pointer<Void>, int) wrap() {
+    return (Pointer<Void> bufferData, int frames) {
+      final bufferDataList =
+          shortPointerToByte16List(bufferData.cast(), frames);
+      return this(bufferDataList);
+    };
+  }
+}
+
+extension FloatAudioCallbackWrapper on FloatAudioCallback {
+  void Function(Pointer<Void>, int) wrap() {
+    return (Pointer<Void> bufferData, int frames) {
+      final bufferDataList =
+          floatPointerToFloat32List(bufferData.cast(), frames * 2);
+      final result = this(bufferDataList);
+      if (result.length != bufferDataList.length) {
+        throw Exception(
+          "The buffer returned from an audio processor callback must have the same length as the original buffer",
+        );
+      }
+
+      final bufferP = bufferData.cast<Float>();
+      for (int i = 0; i < frames * 2; i++) {
+        bufferP[i] = result[i];
+      }
+
+      return;
     };
   }
 }

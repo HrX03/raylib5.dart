@@ -225,6 +225,18 @@ void stopAutomationEventRecording() =>
 void playAutomationEvent(AutomationEvent event) =>
     zoneRayLib.playAutomationEvent(event);
 
+/* ----- core/camera.dart ----- */
+void updateCamera(Camera camera, CameraMode mode) =>
+    zoneRayLib.updateCamera(camera, mode);
+
+void updateCameraPro(
+  Camera camera,
+  Vector3 movement,
+  Vector3 rotation,
+  double zoom,
+) =>
+    zoneRayLib.updateCameraPro(camera, movement, rotation, zoom);
+
 /* ----- core/cursor.dart ----- */
 void showCursor() => zoneRayLib.showCursor();
 
@@ -693,6 +705,402 @@ void scissorModeScope(
 
 void vrStereoModeScope(VrStereoConfig config, void Function() scope) =>
     zoneRayLib.vrStereoModeScope(config, scope);
+
+/* ----- models/basic.dart ----- */
+void drawLine3D(Vector3 startPos, Vector3 endPos, Color color) =>
+    zoneRayLib.drawLine3D(startPos, endPos, color);
+
+void drawPoint3D(Vector3 position, Color color) =>
+    zoneRayLib.drawPoint3D(position, color);
+
+void drawCircle3D(
+  Vector3 center,
+  double radius,
+  Vector3 rotationAxis,
+  double rotationAngle,
+  Color color,
+) =>
+    zoneRayLib.drawCircle3D(center, radius, rotationAxis, rotationAngle, color);
+
+void drawTriangle3D(Vector3 v1, Vector3 v2, Vector3 v3, Color color) =>
+    zoneRayLib.drawTriangle3D(v1, v2, v3, color);
+
+void drawTriangleStrip3D(List<Vector3> points, int pointCount, Color color) =>
+    zoneRayLib.drawTriangleStrip3D(points, pointCount, color);
+
+void drawCube(
+  Vector3 position,
+  double width,
+  double height,
+  double length,
+  Color color,
+) =>
+    zoneRayLib.drawCube(position, width, height, length, color);
+
+void drawCubeV(Vector3 position, Vector3 size, Color color) =>
+    zoneRayLib.drawCubeV(position, size, color);
+
+void drawCubeWires(
+  Vector3 position,
+  double width,
+  double height,
+  double length,
+  Color color,
+) =>
+    zoneRayLib.drawCubeWires(position, width, height, length, color);
+
+void drawCubeWiresV(Vector3 position, Vector3 size, Color color) =>
+    zoneRayLib.drawCubeWiresV(position, size, color);
+
+void drawSphere(Vector3 centerPos, double radius, Color color) =>
+    zoneRayLib.drawSphere(centerPos, radius, color);
+
+void drawSphereEx(
+  Vector3 centerPos,
+  double radius,
+  int rings,
+  int slices,
+  Color color,
+) =>
+    zoneRayLib.drawSphereEx(centerPos, radius, rings, slices, color);
+
+void drawSphereWires(
+  Vector3 centerPos,
+  double radius,
+  int rings,
+  int slices,
+  Color color,
+) =>
+    zoneRayLib.drawSphereWires(centerPos, radius, rings, slices, color);
+
+void drawCylinder(
+  Vector3 position,
+  double radiusTop,
+  double radiusBottom,
+  double height,
+  int slices,
+  Color color,
+) =>
+    zoneRayLib.drawCylinder(
+      position,
+      radiusTop,
+      radiusBottom,
+      height,
+      slices,
+      color,
+    );
+
+void drawCylinderEx(
+  Vector3 startPos,
+  Vector3 endPos,
+  double startRadius,
+  double endRadius,
+  int sides,
+  Color color,
+) =>
+    zoneRayLib.drawCylinderEx(
+      startPos,
+      endPos,
+      startRadius,
+      endRadius,
+      sides,
+      color,
+    );
+
+void drawCylinderWires(
+  Vector3 position,
+  double radiusTop,
+  double radiusBottom,
+  double height,
+  int slices,
+  Color color,
+) =>
+    zoneRayLib.drawCylinderWires(
+      position,
+      radiusTop,
+      radiusBottom,
+      height,
+      slices,
+      color,
+    );
+
+void drawCylinderWiresEx(
+  Vector3 startPos,
+  Vector3 endPos,
+  double startRadius,
+  double endRadius,
+  int sides,
+  Color color,
+) =>
+    zoneRayLib.drawCylinderWiresEx(
+      startPos,
+      endPos,
+      startRadius,
+      endRadius,
+      sides,
+      color,
+    );
+
+void drawCapsule(
+  Vector3 startPos,
+  Vector3 endPos,
+  double radius,
+  int slices,
+  int rings,
+  Color color,
+) =>
+    zoneRayLib.drawCapsule(startPos, endPos, radius, slices, rings, color);
+
+void drawCapsuleWires(
+  Vector3 startPos,
+  Vector3 endPos,
+  double radius,
+  int slices,
+  int rings,
+  Color color,
+) =>
+    zoneRayLib.drawCapsuleWires(startPos, endPos, radius, slices, rings, color);
+
+void drawPlane(Vector3 centerPos, Vector2 size, Color color) =>
+    zoneRayLib.drawPlane(centerPos, size, color);
+
+void drawRay(Ray ray, Color color) => zoneRayLib.drawRay(ray, color);
+
+void drawGrid(int slices, double spacing) =>
+    zoneRayLib.drawGrid(slices, spacing);
+
+/* ----- models/collision.dart ----- */
+bool checkCollisionSpheres(
+  Vector3 center1,
+  double radius1,
+  Vector3 center2,
+  double radius2,
+) =>
+    zoneRayLib.checkCollisionSpheres(center1, radius1, center2, radius2);
+
+bool checkCollisionBoxes(BoundingBox box1, BoundingBox box2) =>
+    zoneRayLib.checkCollisionBoxes(box1, box2);
+
+bool checkCollisionBoxSphere(BoundingBox box, Vector3 center, double radius) =>
+    zoneRayLib.checkCollisionBoxSphere(box, center, radius);
+
+RayCollision getRayCollisionSphere(Ray ray, Vector3 center, double radius) =>
+    zoneRayLib.getRayCollisionSphere(ray, center, radius);
+
+RayCollision getRayCollisionBox(Ray ray, BoundingBox box) =>
+    zoneRayLib.getRayCollisionBox(ray, box);
+
+RayCollision getRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform) =>
+    zoneRayLib.getRayCollisionMesh(ray, mesh, transform);
+
+RayCollision getRayCollisionTriangle(
+  Ray ray,
+  Vector3 p1,
+  Vector3 p2,
+  Vector3 p3,
+) =>
+    zoneRayLib.getRayCollisionTriangle(ray, p1, p2, p3);
+
+RayCollision getRayCollisionQuad(
+  Ray ray,
+  Vector3 p1,
+  Vector3 p2,
+  Vector3 p3,
+  Vector3 p4,
+) =>
+    zoneRayLib.getRayCollisionQuad(ray, p1, p2, p3, p4);
+
+/* ----- models/material_loading.dart ----- */
+List<Material> loadMaterials(String fileName) =>
+    zoneRayLib.loadMaterials(fileName);
+
+Material loadMaterialDefault() => zoneRayLib.loadMaterialDefault();
+
+bool isMaterialReady(Material material) => zoneRayLib.isMaterialReady(material);
+
+void unloadMaterial(Material material) => zoneRayLib.unloadMaterial(material);
+
+void setMaterialTexture(Material material, int mapType, Texture2D texture) =>
+    zoneRayLib.setMaterialTexture(material, mapType, texture);
+
+void setModelMeshMaterial(Model model, int meshId, int materialId) =>
+    zoneRayLib.setModelMeshMaterial(model, meshId, materialId);
+
+/* ----- models/mesh_generation.dart ----- */
+Mesh genMeshPoly(int sides, double radius) =>
+    zoneRayLib.genMeshPoly(sides, radius);
+
+Mesh genMeshPlane(double width, double length, int resX, int resZ) =>
+    zoneRayLib.genMeshPlane(width, length, resX, resZ);
+
+Mesh genMeshCube(double width, double height, double length) =>
+    zoneRayLib.genMeshCube(width, height, length);
+
+Mesh genMeshSphere(double radius, int rings, int slices) =>
+    zoneRayLib.genMeshSphere(radius, rings, slices);
+
+Mesh genMeshHemiSphere(double radius, int rings, int slices) =>
+    zoneRayLib.genMeshHemiSphere(radius, rings, slices);
+
+Mesh genMeshCylinder(double radius, double height, int slices) =>
+    zoneRayLib.genMeshCylinder(radius, height, slices);
+
+Mesh genMeshCone(double radius, double height, int slices) =>
+    zoneRayLib.genMeshCone(radius, height, slices);
+
+Mesh genMeshTorus(double radius, double size, int radSeg, int sides) =>
+    zoneRayLib.genMeshTorus(radius, size, radSeg, sides);
+
+Mesh genMeshKnot(double radius, double size, int radSeg, int sides) =>
+    zoneRayLib.genMeshKnot(radius, size, radSeg, sides);
+
+Mesh genMeshHeightmap(Image heightmap, Vector3 size) =>
+    zoneRayLib.genMeshHeightmap(heightmap, size);
+
+Mesh genMeshCubicmap(Image cubicmap, Vector3 cubeSize) =>
+    zoneRayLib.genMeshCubicmap(cubicmap, cubeSize);
+
+/* ----- models/mesh_management.dart ----- */
+void uploadMesh(Mesh mesh, bool dynamic) =>
+    zoneRayLib.uploadMesh(mesh, dynamic);
+
+void updateMeshBuffer(Mesh mesh, int index, Uint8List data, int offset) =>
+    zoneRayLib.updateMeshBuffer(mesh, index, data, offset);
+
+void unloadMesh(Mesh mesh) => zoneRayLib.unloadMesh(mesh);
+
+void drawMesh(Mesh mesh, Material material, Matrix transform) =>
+    zoneRayLib.drawMesh(mesh, material, transform);
+
+void drawMeshInstanced(
+  Mesh mesh,
+  Material material,
+  List<Matrix> transforms,
+  int instances,
+) =>
+    zoneRayLib.drawMeshInstanced(mesh, material, transforms, instances);
+
+bool exportMesh(Mesh mesh, String fileName) =>
+    zoneRayLib.exportMesh(mesh, fileName);
+
+BoundingBox getMeshBoundingBox(Mesh mesh) =>
+    zoneRayLib.getMeshBoundingBox(mesh);
+
+void genMeshTangents(Mesh mesh) => zoneRayLib.genMeshTangents(mesh);
+
+/* ----- models/model_animation_loading.dart ----- */
+List<ModelAnimation> loadModelAnimations(String fileName) =>
+    zoneRayLib.loadModelAnimations(fileName);
+
+void updateModelAnimation(Model model, ModelAnimation anim, int frame) =>
+    zoneRayLib.updateModelAnimation(model, anim, frame);
+
+void unloadModelAnimation(ModelAnimation anim) =>
+    zoneRayLib.unloadModelAnimation(anim);
+
+void unloadModelAnimations(List<ModelAnimation> animations) =>
+    zoneRayLib.unloadModelAnimations(animations);
+
+bool isModelAnimationValid(Model model, ModelAnimation anim) =>
+    zoneRayLib.isModelAnimationValid(model, anim);
+
+/* ----- models/model_drawing.dart ----- */
+void drawModel(Model model, Vector3 position, double scale, Color tint) =>
+    zoneRayLib.drawModel(model, position, scale, tint);
+
+void drawModelEx(
+  Model model,
+  Vector3 position,
+  Vector3 rotationAxis,
+  double rotationAngle,
+  Vector3 scale,
+  Color tint,
+) =>
+    zoneRayLib.drawModelEx(
+      model,
+      position,
+      rotationAxis,
+      rotationAngle,
+      scale,
+      tint,
+    );
+
+void drawModelWires(Model model, Vector3 position, double scale, Color tint) =>
+    zoneRayLib.drawModelWires(model, position, scale, tint);
+
+void drawModelWiresEx(
+  Model model,
+  Vector3 position,
+  Vector3 rotationAxis,
+  double rotationAngle,
+  Vector3 scale,
+  Color tint,
+) =>
+    zoneRayLib.drawModelWiresEx(
+      model,
+      position,
+      rotationAxis,
+      rotationAngle,
+      scale,
+      tint,
+    );
+
+void drawBoundingBox(BoundingBox box, Color color) =>
+    zoneRayLib.drawBoundingBox(box, color);
+
+void drawBillboard(
+  Camera camera,
+  Texture2D texture,
+  Vector3 position,
+  double size,
+  Color tint,
+) =>
+    zoneRayLib.drawBillboard(camera, texture, position, size, tint);
+
+void drawBillboardRec(
+  Camera camera,
+  Texture2D texture,
+  Rectangle source,
+  Vector3 position,
+  Vector2 size,
+  Color tint,
+) =>
+    zoneRayLib.drawBillboardRec(camera, texture, source, position, size, tint);
+
+void drawBillboardPro(
+  Camera camera,
+  Texture2D texture,
+  Rectangle source,
+  Vector3 position,
+  Vector3 up,
+  Vector2 size,
+  Vector2 origin,
+  double rotation,
+  Color tint,
+) =>
+    zoneRayLib.drawBillboardPro(
+      camera,
+      texture,
+      source,
+      position,
+      up,
+      size,
+      origin,
+      rotation,
+      tint,
+    );
+
+/* ----- models/model_management.dart ----- */
+Model loadModel(String fileName) => zoneRayLib.loadModel(fileName);
+
+Model loadModelFromMesh(Mesh mesh) => zoneRayLib.loadModelFromMesh(mesh);
+
+bool isModelReady(Model model) => zoneRayLib.isModelReady(model);
+
+void unloadModel(Model model) => zoneRayLib.unloadModel(model);
+
+BoundingBox getModelBoundingBox(Model model) =>
+    zoneRayLib.getModelBoundingBox(model);
 
 /* ----- shapes/basic.dart ----- */
 void setShapesTexture(Texture2D texture, Rectangle source) =>

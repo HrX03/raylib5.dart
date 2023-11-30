@@ -64,13 +64,41 @@ class NVector4<T extends num> extends NativeClass<raylib.Vector4> {
   set w(T w) => ref.w = w.toDouble();
 }
 
-typedef Vector2 = NVector2<double>;
-typedef Vector3 = NVector3<double>;
-typedef Vector4 = NVector4<double>;
+class Vector2 extends NVector2<double> {
+  Vector2(super.x, super.y);
+  Vector2.fromRef(super.ref) : super.fromRef();
+  Vector2.zero() : super(0.0, 0.0);
+}
 
-typedef IVector2 = NVector2<int>;
-typedef IVector3 = NVector3<int>;
-typedef IVector4 = NVector4<int>;
+class Vector3 extends NVector3<double> {
+  Vector3(super.x, super.y, super.z);
+  Vector3.fromRef(super.ref) : super.fromRef();
+  Vector3.zero() : super(0.0, 0.0, 0.0);
+}
+
+class Vector4 extends NVector4<double> {
+  Vector4(super.x, super.y, super.z, super.w);
+  Vector4.fromRef(super.ref) : super.fromRef();
+  Vector4.zero() : super(0.0, 0.0, 0.0, 0.0);
+}
+
+class IVector2 extends NVector2<int> {
+  IVector2(super.x, super.y);
+  IVector2.fromRef(super.ref) : super.fromRef();
+  IVector2.zero() : super(0, 0);
+}
+
+class IVector3 extends NVector3<int> {
+  IVector3(super.x, super.y, super.z);
+  IVector3.fromRef(super.ref) : super.fromRef();
+  IVector3.zero() : super(0, 0, 0);
+}
+
+class IVector4 extends NVector4<int> {
+  IVector4(super.x, super.y, super.z, super.w);
+  IVector4.fromRef(super.ref) : super.fromRef();
+  IVector4.zero() : super(0, 0, 0, 0);
+}
 
 extension on num {
   T convertTo<T extends num>() {

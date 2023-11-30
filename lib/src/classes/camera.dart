@@ -33,7 +33,7 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
   set zoom(double zoom) => ref.zoom = zoom;
 }
 
-class Camera3D extends NativeClass<raylib.Camera3D> {
+class Camera3D extends NativeClass<raylib.Camera3D> with Pointable {
   Camera3D({
     Vector3? position,
     Vector3? target,
@@ -51,6 +51,19 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
   }
 
   Camera3D.fromRef(super.ref) : super.fromRef();
+
+  @override
+  raylib.Camera3D get ref => pointer?.ref ?? super.ref;
+
+  @override
+  Pointer<raylib.Camera3D> getPointer() {
+    if (pointer == null) {
+      final oldRef = ref;
+      pointer = calloc<raylib.Camera3D>();
+      pointer!.ref = oldRef;
+    }
+    return pointer!;
+  }
 
   Vector3 get position => Vector3.fromRef(ref.position);
   set position(Vector3 position) => ref.position = position.ref;

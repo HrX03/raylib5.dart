@@ -5,6 +5,7 @@ import 'package:ffi/ffi.dart';
 import 'package:raylib/src/classes/glyph_info.dart';
 import 'package:raylib/src/classes/image.dart';
 import 'package:raylib/src/classes/matrix.dart';
+import 'package:raylib/src/classes/model_animation.dart';
 import 'package:raylib/src/classes/rectangle.dart';
 import 'package:raylib/src/classes/vector.dart';
 import 'package:raylib/src/generated_raylib.dart' as raylib;
@@ -51,6 +52,18 @@ Pointer<raylib.Vector2> vector2ListToPointer(
   Allocator allocator = calloc,
 }) {
   final cArray = allocator<raylib.Vector2>(data.length);
+  for (var i = 0; i < data.length; i++) {
+    cArray[i] = data[i].ref;
+  }
+
+  return cArray;
+}
+
+Pointer<raylib.Vector3> vector3ListToPointer(
+  List<Vector3> data, {
+  Allocator allocator = calloc,
+}) {
+  final cArray = allocator<raylib.Vector3>(data.length);
   for (var i = 0; i < data.length; i++) {
     cArray[i] = data[i].ref;
   }
@@ -122,6 +135,30 @@ List<double> pointerToSamples(Pointer<Float> pointer, int size) {
   }
 
   return data;
+}
+
+Pointer<raylib.Matrix> transformsListToPointer(
+  List<Matrix> data, {
+  Allocator allocator = calloc,
+}) {
+  final cArray = allocator<raylib.Matrix>(data.length);
+  for (var i = 0; i < data.length; i++) {
+    cArray[i] = data[i].ref;
+  }
+
+  return cArray;
+}
+
+Pointer<raylib.ModelAnimation> animationListToPointer(
+  List<ModelAnimation> data, {
+  Allocator allocator = calloc,
+}) {
+  final cArray = allocator<raylib.ModelAnimation>(data.length);
+  for (var i = 0; i < data.length; i++) {
+    cArray[i] = data[i].ref;
+  }
+
+  return cArray;
 }
 
 extension MatrixArrayCopy2 on Array<raylib.Matrix> {

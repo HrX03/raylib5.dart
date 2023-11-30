@@ -3,6 +3,8 @@ import 'dart:typed_data';
 
 import 'package:raylib/raylib.dart';
 
+export 'package:raylib/src/internal/pointer_list.dart';
+
 typedef Array2<T> = (T, T);
 typedef Array4<T> = (T, T, T, T);
 
@@ -34,3 +36,5 @@ typedef ImageSequence = (Image img, int frameCount);
 
 typedef AudioProcessorToken
     = CallbackToken<Void Function(Pointer<Void>, UnsignedInt)>;
+
+typedef Quaternion = Vector4;

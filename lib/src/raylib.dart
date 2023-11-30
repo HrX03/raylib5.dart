@@ -10,6 +10,7 @@ import 'package:raylib/src/internal/utils.dart';
 
 part 'modules/core/advanced.dart';
 part 'modules/core/automation.dart';
+part 'modules/core/camera.dart';
 part 'modules/core/cursor.dart';
 part 'modules/core/draw.dart';
 part 'modules/core/encoding.dart';
@@ -46,6 +47,15 @@ part 'modules/textures/texture_configuration.dart';
 part 'modules/textures/texture_drawing.dart';
 part 'modules/textures/texture_loading.dart';
 
+part 'modules/models/basic.dart';
+part 'modules/models/collision.dart';
+part 'modules/models/material_loading.dart';
+part 'modules/models/mesh_generation.dart';
+part 'modules/models/mesh_management.dart';
+part 'modules/models/model_animation_loading.dart';
+part 'modules/models/model_drawing.dart';
+part 'modules/models/model_management.dart';
+
 part 'modules/audio/dev_management.dart';
 part 'modules/audio/music_management.dart';
 part 'modules/audio/processor.dart';
@@ -66,6 +76,7 @@ class RayLib extends _RayLibBase
         _ManagedModule,
         _CoreAdvancedModule,
         _CoreAutomationModule,
+        _CoreCameraModule,
         _CoreCursorModule,
         _CoreDrawModule,
         _CoreEncodingModule,
@@ -98,6 +109,14 @@ class RayLib extends _RayLibBase
         _TexturesTextureConfigurationModule,
         _TexturesTextureDrawingModule,
         _TexturesTextureLoadingModule,
+        _ModelsBasicModule,
+        _ModelsCollisionModule,
+        _ModelsMaterialLoadingModule,
+        _ModelsMeshGenerationModule,
+        _ModelsMeshManagementModule,
+        _ModelsModelAnimationLoadingModule,
+        _ModelsModelDrawingModule,
+        _ModelsModelManagementModule,
         _AudioDevManagementModule,
         _AudioMusicManagementModule,
         _AudioProcessorModule,
